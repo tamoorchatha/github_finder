@@ -8,3 +8,5 @@ const AlertReducer = (state, action)=>{
             return state        
     }
 }
+
+export default AlertReducer
