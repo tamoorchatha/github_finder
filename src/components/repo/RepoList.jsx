@@ -1,4 +1,4 @@
-
+import Repo from "./Repo"
 
 function RepoList({repos}) {
     console.log(repos)
@@ -12,7 +12,7 @@ function RepoList({repos}) {
         </div>
             {repos.map((repo)=>{
                 return(
-                <h3>{repo.name}</h3>
+                <Repo key={repo.id} repo={repo} />
             )
             })}
     </div>
