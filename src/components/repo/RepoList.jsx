@@ -1,12 +1,21 @@
-import {useContext} from "react";
-import GithubContext from "../../context/github/GithubContext";
 
 
-function RepoList() {
-    const {}
+function RepoList({repos}) {
+    console.log(repos)
     
   return (
-    <div>{item}</div>
+    <div className="rounded-lg shadow-lg card bg-base-100">
+        <div className="card-body">
+            <h2 className="text-3xl my-4 font-bold card-title">
+                Latest Repositories
+            </h2>
+        </div>
+            {repos.map((repo)=>{
+                return(
+                <h3>{repo.name}</h3>
+            )
+            })}
+    </div>
   )
 }
 
