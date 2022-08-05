@@ -13,21 +13,12 @@ export const GithubProvider = ({children})=>{
     }
 
     const [state, dispatch] = useReducer(GithubReducer, initialState)
-
-    // function to get users search results
-    
-    
-    const clearUsers = ()=>{
-        dispatch({
-            type: "CLEAR_USERS"
-        })
-    }    
+   
 
     return <GithubContext.Provider
         value={{
             ...state,
             dispatch,
-            clearUsers,
         }}
     >
         {children}
