@@ -16,58 +16,6 @@ export const GithubProvider = ({children})=>{
 
     // function to get users search results
     
-
-    // function to get specific user
-    const getUser = async (login)=>{
-        setLoading()
-
-        const response = await fetch(`${process.env.REACT_APP_GITHUB_API}/users/${login}`, {
-            headers: {
-                   Authorization:  `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-            }
-        })
-
-        if(response.status === 404){
-            window.location('/notfound')
-        }else{
-            const data = await response.json()
-
-        dispatch({
-            type: "GET_USER",
-            payload: data
-        })
-        }
-        
-    }
-
-    const getRepos = async (login)=>{
-        setLoading();
-
-        const params = new URLSearchParams({
-            sort: "created",
-            per_page: 10,
-        })
-
-        const response = await fetch(`${process.env.REACT_APP_GITHUB_API}/users/${login}/repos?${params}`, {
-            headers: {
-                   Authorization:  `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-            }
-        })
-
-        
-            const data = await response.json()
-
-        dispatch({
-            type: "GET_REPOS",
-            payload: data
-        })
-    
-        
-    }
-
-    const setLoading = ()=>dispatch({
-            type: "SET_LOADING"
-        })
     
     const clearUsers = ()=>{
         dispatch({
@@ -80,8 +28,6 @@ export const GithubProvider = ({children})=>{
             ...state,
             dispatch,
             clearUsers,
-            getUser,
-            getRepos
         }}
     >
         {children}
